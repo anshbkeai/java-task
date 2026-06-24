@@ -1,5 +1,8 @@
 package com.windchill.windchill.validators;
 
+import java.util.List;
+
+import com.windchill.windchill.model.WTDocument;
 import com.windchill.windchill.model.WTPart;
 import com.windchill.windchill.service.DocumentService;
 
@@ -16,9 +19,11 @@ public class ComplianceDocumentPromotionValidator {
             // need only for if the part is Mechnical
             if ("MECHANICAL".equals(part.getType())) {
                 // check if the part has any compliance documents
-                if (documentService.getDocuments(part.getId()).isEmpty()) {
-                    throw new RuntimeException("Mechanical parts must have at least one compliance document before promotion.");
-                }
+                List<WTDocument> complianceDocuments = documentService.getDocuments(part.getId());
+                complianceDocuments.stream().filter(doc -> "COMPLIANCE".equals(doc.getDocumentType())).findAny().orElseThrow(() -> new RuntimeException("Release blocked:\n" + //
+                                        "Compliance Document must be attached before releasing this part."));
+
+
             }
         }
 }

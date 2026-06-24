@@ -9,6 +9,9 @@ public class PromotionNotice {
     public PromotionNotice(List<WTPart> promotables) {
         this.promotables = promotables;
     }
+    
+    public PromotionNotice() {
+    }
 
     public List<WTPart> getPromotables() {
         return promotables;

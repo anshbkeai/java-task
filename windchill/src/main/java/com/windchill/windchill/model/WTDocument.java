@@ -16,6 +16,9 @@ public class WTDocument {
         return id;
     }
 
+    public WTDocument() {
+    }
+
     public String getDocumentType() {
         return documentType;
     }
