@@ -19,4 +19,9 @@ public class WTDocument {
     public String getDocumentType() {
         return documentType;
     }
+
+    @Override
+    public String toString() {
+        return "WTDocument [id=" + id + ", documentType=" + documentType + "]";
+    }
 }

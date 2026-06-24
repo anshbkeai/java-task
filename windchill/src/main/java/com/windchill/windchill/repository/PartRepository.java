@@ -7,11 +7,11 @@ import com.windchill.windchill.model.WTPart;
 
 public class PartRepository {
 
-    private Map<Long, WTPart> database
+    private static Map<Long, WTPart> database
             = new HashMap<>();
 
     public WTPart findById(Long id) {
-
+ 
         return database.get(id);
     }
 

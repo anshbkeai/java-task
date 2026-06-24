@@ -26,6 +26,12 @@ public class WTPart {
         return number;
     }
 
+    @Override
+    public String toString() {
+        return "WTPart [id=" + id + ", number=" + number + ", type=" + type + ", lifecycleState=" + lifecycleState
+                + "]";
+    }
+
     public String getType() {
         return type;
     }

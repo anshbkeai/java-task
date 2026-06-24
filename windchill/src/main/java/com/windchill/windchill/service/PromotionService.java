@@ -1,5 +1,7 @@
 package com.windchill.windchill.service;
 
+import java.util.ArrayList;
+
 import com.windchill.windchill.model.PromotionNotice;
 import com.windchill.windchill.model.WTPart;
 import com.windchill.windchill.repository.PartRepository;
@@ -19,11 +21,15 @@ public class PromotionService {
         this.repository = repository;
     }
 
-    public void promote(
+    public PromotionNotice promote(
             PromotionNotice notice) {
 
+            PromotionNotice promotionNotice = new PromotionNotice(new ArrayList<>());
         for(WTPart part :
                 notice.getPromotables()) {
+
+            System.out.println(
+                    "Promoting part: in promotion service" + part   );
 
             validator.validate(part);
 
@@ -31,6 +37,9 @@ public class PromotionService {
                     "RELEASED");
 
             repository.save(part);
+            promotionNotice.getPromotables().add(part);
+
         }
+        return promotionNotice;
     }
 }

@@ -13,4 +13,10 @@ public class PromotionNotice {
     public List<WTPart> getPromotables() {
         return promotables;
     }
+
+    @Override
+    public String toString() {
+        return "PromotionNotice [promotables=" + promotables.stream().map(x -> x.toString()).reduce((a, b) -> a + ", " + b).orElse("") + "]";
+    }
+
 }
