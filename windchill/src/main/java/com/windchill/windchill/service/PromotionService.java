@@ -36,6 +36,8 @@ public class PromotionService {
             part.setLifecycleState(
                     "RELEASED");
 
+            System.out.println("Promoting part: " + part.getNumber() + " to state: " + part.getLifecycleState());
+
             repository.save(part);
             promotionNotice.getPromotables().add(part);
 
