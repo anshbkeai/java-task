@@ -30,15 +30,22 @@ public class PromotionService {
 
             System.out.println(
                     "Promoting part: in promotion service" + part   );
+            try {
 
-            validator.validate(part);
+                validator.validate(part);
+            }
+            catch(Exception e)  {
+                throw new RuntimeException("Not able to process the part " +part.toString());
+            }
 
-            part.setLifecycleState(
+        }
+
+        for(WTPart part : notice.getPromotables()) {
+             part.setLifecycleState(
                     "RELEASED");
 
             repository.save(part);
             promotionNotice.getPromotables().add(part);
-
         }
         return promotionNotice;
     }
