@@ -48,7 +48,7 @@ public class PromotionService {
 
             repository.save(part);
             promotionNotice.getPromotables().add(part);
-git          }
+          }
         return promotionNotice;
     }
 }
